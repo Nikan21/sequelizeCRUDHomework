@@ -2,7 +2,9 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {}
+    static associate(models) {
+      User.hasMany(models.Order, { foreignKey: "id_user" });
+    }
   }
   User.init(
     {
@@ -14,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
           isAlpha: true,
           notNull: true,
           notEmpty: true,
-          len: [2, 64]
+          len: [2, 64],
         },
       },
       lastName: {
@@ -25,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
           isAlpha: true,
           notNull: true,
           notEmpty: true,
-          len: [2, 128]
+          len: [2, 128],
         },
       },
       email: {
@@ -34,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isEmail: true,
           notNull: true,
-          notEmpty: true
+          notEmpty: true,
         },
       },
       birthday: {
@@ -43,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isDate: true,
           notNull: true,
-          notEmpty: true
+          notEmpty: true,
         },
       },
     },
