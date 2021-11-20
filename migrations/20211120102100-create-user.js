@@ -9,22 +9,30 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstName: {
-        type: Sequelize.STRING
+        field: "first_name",
+        type: Sequelize.STRING,
+        allowNull: false
       },
       lastName: {
-        type: Sequelize.STRING
+        field: "last_name",
+        type: Sequelize.STRING(128),
+        allowNull: false
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(256),
+        allowNull: false
       },
       birthday: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
+        allowNull: false
       },
       createdAt: {
+        field: "created_at",
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
+        field: "update_at",
         allowNull: false,
         type: Sequelize.DATE
       }
