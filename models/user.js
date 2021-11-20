@@ -1,10 +1,10 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Users extends Model {
+  class User extends Model {
     static associate(models) {}
   }
-  Users.init(
+  User.init(
     {
       firstName: {
         field: "first_name",
@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Users",
+      modelName: "User",
       tableName: "users",
       underscore: true,
     }
   );
-  return Users;
+  return User;
 };
