@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
       firstName: {
         field: "first_name",
         type: DataTypes.STRING(64),
-        allowNull: false,
+        allowNull: false
       },
       lastName: {
         field: "last_name",
         type: DataTypes.STRING(128),
-        allowNull: false,
+        allowNull: false
       },
       email: { type: DataTypes.STRING(256), allowNull: false },
       birthday: { type: DataTypes.DATEONLY, allowNull: false },
