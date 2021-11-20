@@ -1,27 +1,61 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    static associate(models) {}
+  }
+  Order.init(
+    {
+      nameOrders: {
+        field: "name_orders",
+        type: DataTypes.STRING(256),
+        allowNull: false,
+        validate: {
+          isAlphanumeric: true,
+          notNull: true,
+          notEmpty: true,
+          len: [5, 256],
+        },
+      },
+      idUser: {
+        field: "id_user",
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "User",
+          key: "id",
+        },
+      },
+      quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 1 },
+      isSend: {
+        field: "is_send",
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+        validate: {
+          isNumeric: true,
+          notNull: true,
+          notEmpty: true,
+          min: 1,
+        },
+      },
+      dateSend: {
+        field: "date_send",
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+          isDate: true,
+          notNull: true,
+          notEmpty: true,
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Order",
+      tableName: "oreders",
+      underscore: true,
     }
-  };
-  Order.init({
-    nameOrders: DataTypes.STRING,
-    idUser: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER,
-    isSend: DataTypes.BOOLEAN,
-    dateSend: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
+  );
   return Order;
 };
