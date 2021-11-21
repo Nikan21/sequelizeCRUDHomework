@@ -6,9 +6,10 @@ usersRouter
 .get(userController.getAllUsers)
 .post(userController.createUser)
 
+usersRouter
 .route('/:id')
 .get(userController.getUserByID)
-.update(userController.updateUser)
+.patch(userController.updateUser)
 .delete(userController.deleteUser)
 
 module.exports = usersRouter;

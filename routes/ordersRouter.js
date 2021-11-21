@@ -6,9 +6,10 @@ ordersRouter
 .get(orderController.getAllOrders)
 .post(orderController.createOrders)
 
+ordersRouter
 .route('/:id')
 .get(orderController.getOrderByID)
-.update(orderController.updateOrder)
+.patch(orderController.updateOrder)
 .delete(orderController.deleteOrder)
 
 module.exports = ordersRouter;
