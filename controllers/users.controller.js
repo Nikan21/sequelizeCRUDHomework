@@ -2,7 +2,7 @@ const { User } = require("../models");
 const _ = require("lodash");
 
 const preparedUser = (body) =>
-  _.pick(body, ["first_name", "last_name", "email", "birthday"]);
+  _.pick(body, ["firstName", "lastName", "email", "birthday"]);
 
 module.exports.getAllUsers = async (req, res, next) => {
   try {
@@ -17,6 +17,7 @@ module.exports.createUser = async (req, res, next) => {
   try {
     const prep = preparedUser(req.body);
     const createUser = await User.create(prep);
+    new Date(req.body.birthday)
     res.status(201).send({ data: createUser });
   } catch (error) {
     next(error);
