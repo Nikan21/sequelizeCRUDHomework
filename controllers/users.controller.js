@@ -13,7 +13,7 @@ module.exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-module.exports.postUser = async (req, res, next) => {
+module.exports.createUser = async (req, res, next) => {
   try {
     const prep = preparedUser(req.body);
     const createUser = await User.create(prep);
