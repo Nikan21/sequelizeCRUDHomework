@@ -16,8 +16,9 @@ module.exports.getAllUsers = async (req, res, next) => {
 module.exports.createUser = async (req, res, next) => {
   try {
     const prep = preparedUser(req.body);
+    console.log(new Date(req.body.birthday) );
+    req.body.birthday = new Date(req.body.birthday).toISOString()
     const createUser = await User.create(prep);
-    new Date(req.body.birthday)
     res.status(201).send({ data: createUser });
   } catch (error) {
     next(error);
